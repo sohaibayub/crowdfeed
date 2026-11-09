@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard, CrowdFeed</title>
+  <meta name="theme-color" content="#0b7a75">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">CrowdFeed <span class="muted" style="font-weight:400">dashboard</span></a>
+    <nav class="topnav" aria-label="Main">
+      <a href="/scan">Staff scanner</a>
+      <button class="btn btn-ghost" id="logout" type="button" hidden>Sign out</button>
+    </nav>
+  </header>
+  <main id="main" class="page wide">
+    <section class="card" id="login-card" style="max-width:420px;margin:40px auto">
+      <h1>Sign in</h1>
+      <form id="login-form" class="stack">
+        <label class="field"><span>Administrator password</span><input class="input" type="password" id="password" autocomplete="current-password" required></label>
+        <p class="notice danger" id="login-error" hidden></p>
+        <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+    </section>
+
+    <div id="app" hidden>
+      <div class="tabs" role="tablist" aria-label="Sections">
+        <button role="tab" data-tab="venues" aria-selected="true">Venues</button>
+        <button role="tab" data-tab="questions" aria-selected="false">Questions</button>
+        <button role="tab" data-tab="results" aria-selected="false">Results</button>
+        <button role="tab" data-tab="notify" aria-selected="false">Notify</button>
+      </div>
+      <section id="panel" role="tabpanel"></section>
+    </div>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/vendor/qrcode-generator.js" defer></script>
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>

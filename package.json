@@ -1,0 +1,22 @@
+{
+  "name": "crowdfeed",
+  "version": "2.0.0",
+  "description": "CrowdFeed: context-aware, location-sensitive crowdsourcing of customer feedback from people waiting in queues, built as a progressive web app",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "vapid": "node scripts/generate-vapid.js",
+    "test": "node --test",
+    "simulate": "node scripts/simulate-engine.js"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.18.0",
+    "express": "^5.3.0",
+    "web-push": "^4.0.0"
+  }
+}

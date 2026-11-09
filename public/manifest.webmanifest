@@ -1,0 +1,24 @@
+{
+  "name": "CrowdFeed",
+  "short_name": "CrowdFeed",
+  "description": "Give quick feedback while you wait in the queue and get a reward from the venue.",
+  "id": "/",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f7f6",
+  "theme_color": "#0b7a75",
+  "lang": "en",
+  "dir": "auto",
+  "categories": ["productivity", "shopping", "utilities"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Scan a code", "short_name": "Scan", "url": "/?scan=1", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "My rewards", "short_name": "Rewards", "url": "/rewards", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

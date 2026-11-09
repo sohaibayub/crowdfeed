@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Staff scanner, CrowdFeed</title>
+  <meta name="theme-color" content="#0b7a75">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">CrowdFeed <span class="muted" style="font-weight:400">staff</span></a>
+    <nav class="topnav" aria-label="Main"><a href="/admin">Dashboard</a></nav>
+  </header>
+  <main id="main" class="page">
+    <section class="card">
+      <h1>Redeem a coupon</h1>
+      <p class="muted small">Point the camera at the customer's QR code. The coupon is marked as used the moment it is accepted, so it cannot be presented twice. The PIN is the one set for your venue in the dashboard.</p>
+      <p class="muted small" id="venue-note" hidden></p>
+      <form id="setup" class="stack">
+        <label class="field"><span>Staff PIN</span><input id="pin" class="input" type="password" inputmode="numeric" autocomplete="off" required placeholder="PIN for this venue"></label>
+        <button class="btn btn-primary btn-block" type="submit">Start scanning</button>
+      </form>
+    </section>
+    <section class="card" id="scan-card" hidden>
+      <div class="scanner"><video muted playsinline></video><div class="frame"></div></div>
+      <p class="muted small" id="status" style="margin-top:10px">Ready.</p>
+      <div id="result"></div>
+      <form id="manual" class="row" style="margin-top:12px">
+        <input class="input" id="manual-code" placeholder="Or type the code, e.g. QK806 N86BW DHMFJTW4" aria-label="Coupon code" style="flex:1">
+        <button class="btn" type="submit">Check</button>
+      </form>
+      <div class="row" style="margin-top:12px">
+        <button class="btn btn-ghost" id="change" type="button">Change PIN</button>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/js/scan.js"></script>
+</body>
+</html>

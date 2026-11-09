@@ -1,0 +1,27 @@
+# Fly.io configuration: one small machine with a 1 GB volume for the SQLite file.
+# fly launch --copy-config --no-deploy ; fly volumes create crowdfeed_data --size 1 ; fly secrets set ... ; fly deploy
+app = "crowdfeed"
+primary_region = "lhr"
+
+[build]
+
+[env]
+  NODE_ENV = "production"
+  PORT = "3000"
+  DATABASE_URL = "file:/data/crowdfeed.db"
+  TRUST_PROXY = "true"
+
+[mounts]
+  source = "crowdfeed_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"
