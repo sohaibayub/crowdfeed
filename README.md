@@ -54,6 +54,8 @@ Three ways that have been set up here.
 
 **Fly.io with a volume.** `fly launch --copy-config --no-deploy`, `fly volumes create crowdfeed_data --size 1`, `fly secrets set ADMIN_PASSWORD=... SESSION_SECRET=... COUPON_SECRET=... VAPID_PUBLIC_KEY=... VAPID_PRIVATE_KEY=... VAPID_SUBJECT=mailto:... BASE_URL=https://crowdfeed.fly.dev`, then `fly deploy`. The SQLite file lives on the volume.
 
+**Azure App Service (works with Azure for Students).** Create a Web App with Publish set to Code, runtime Node 22 LTS, operating system Linux and region North Europe, on the Free F1 plan to try it out or Basic B1 for Always On. Under Deployment connect the GitHub repository and branch; Azure adds a GitHub Actions workflow that builds and deploys on every push. Under Settings, Environment variables, add the variables from the table above with `DATABASE_URL=file:/home/data/crowdfeed.db` (the `/home` folder of an App Service persists across restarts and deployments), `TRUST_PROXY=true` and `SCM_DO_BUILD_DURING_DEPLOYMENT=true`, then set `BASE_URL` to the hostname Azure gave the app. Turn on HTTPS Only under Configuration. The F1 plan sleeps after twenty minutes without visitors and has a daily CPU quota; B1 removes both and costs about thirteen dollars a month, which the student credit covers.
+
 **Docker or a plain Linux box.** `docker build -t crowdfeed . && docker run -p 3000:3000 --env-file .env -v crowdfeed-data:/app/data crowdfeed`, or run `node server/index.js` under systemd behind any reverse proxy that terminates TLS.
 
 ## Setting up a venue
