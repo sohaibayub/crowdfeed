@@ -49,6 +49,7 @@ export async function createApp() {
     express.static(publicDir, {
       extensions: ['html'],
       setHeaders(res, filePath) {
+        if (/[\\/]sw\.js$/.test(filePath)) return; // keep the no-cache header set above
         if (/\/(vendor|icons)\//.test(filePath)) res.set('Cache-Control', 'public, max-age=604800');
         else if (/\.(css|js|svg|png)$/.test(filePath)) res.set('Cache-Control', 'public, max-age=3600');
       }
